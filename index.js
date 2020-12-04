@@ -18,7 +18,6 @@ function codeImport(options = {
         if (!options.strippedFilePattern.exec(destination)) {
           return;
         }
-        console.log(`[remark-filter-mdx-imports] Removing import of ${destination} from ${file.path}`);
         parent.children.splice(index, 1);
         return [visit.SKIP, index]
       }
