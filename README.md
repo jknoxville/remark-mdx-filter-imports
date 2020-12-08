@@ -8,7 +8,7 @@ This plugin allows you to define a file pattern for matching files, and then rem
 ## Installation
 
 ```sh
-yarn add remark-mdx-filter-imports
+yarn add -D remark-mdx-filter-imports
 ```
 
 ## Setup
