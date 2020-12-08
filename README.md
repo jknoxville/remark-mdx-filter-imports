@@ -1,5 +1,7 @@
 # `remark-mdx-filter-imports`
 
+[![npm version](https://badge.fury.io/js/remark-mdx-filter-imports.svg)](https://badge.fury.io/js/remark-mdx-filter-imports)
+
 Strip mdx imports that match a given pattern.
 Sometimes you want to build subsets of your code base, perhaps with some private files stripped.
 
