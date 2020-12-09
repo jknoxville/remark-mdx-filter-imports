@@ -46,6 +46,40 @@ import useBaseUrl from '@docusaurus/useBaseUrl';`,
   `);
 });
 
+test('Multiple imports without empty lines are modified correctly', () => {
+  expect(
+    createCompiler({ remarkPlugins: [codeImport] }).processSync({
+      contents: `import a from 'b';
+import c from './file.mdx';
+import d from './private/file.mdx';
+import e from './notprivate/file.md';
+import f from '../private/file.md';`,
+      path: __dirname + '/TestFile.java',
+    }).contents
+  ).toMatchInlineSnapshot(`
+    "import a from 'b';
+    import c from './file.mdx';
+    import e from './notprivate/file.md';
+
+
+    const layoutProps = {
+      
+    };
+    const MDXLayout = \\"wrapper\\"
+    export default function MDXContent({
+      components,
+      ...props
+    }) {
+      return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
+
+        </MDXLayout>;
+    }
+
+    ;
+    MDXContent.isMDXComponent = true;"
+  `);
+});
+
 test('Matching relative imports are removed with default config', () => {
   expect(
     createCompiler({ remarkPlugins: [codeImport] }).processSync({
